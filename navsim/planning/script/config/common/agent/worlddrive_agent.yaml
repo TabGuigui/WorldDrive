@@ -1,0 +1,30 @@
+_target_: navsim.agents.worlddrive.worlddrive_agent.WorldDriveAgent
+_convert_: 'all'
+
+trajectory_sampling:
+  _target_: nuplan.planning.simulation.trajectory.trajectory_sampling.TrajectorySampling
+  _convert_: 'all'
+  time_horizon: 4
+  interval_length: 0.5
+
+cache_mode: False
+cache_vae_token: True
+pretrained_vae_path: "zai-org/CogVideoX-2b"
+training_mode: "traj"
+
+with_dit: False
+with_wm_proj: False
+gt_version: 1
+vocab_path: ""
+sim_reward_path: null
+
+checkpoint_path: null
+worldmodel_checkpoint_path: null
+lr: 1e-4
+
+# loss weight
+reg_loss_weight: 1
+cls_loss_weight: 1
+
+# infer
+visualize: False
