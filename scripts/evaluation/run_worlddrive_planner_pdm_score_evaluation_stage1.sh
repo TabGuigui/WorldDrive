@@ -21,13 +21,9 @@ export PORT=${PORT}
 echo "GPUS: ${GPUS}"
 export CUDA_LAUNCH_BLOCKING=1
 
-# 86.9
-# CHECKPOINT="/data/worlddrive/navsim/exp/worldtraj/training_worlddrive/2026.02.10.20.44.58/lightning_logs/version_0/checkpoints/epoch=59-step=10020.ckpt" # 86.9 release
-
 # 87.1
-CHECKPOINT="/data/worlddrive/navsim/exp/worldtraj/training_worlddrive/2026.02.12.21.50.21/lightning_logs/version_0/checkpoints/epoch=59-step=10020.ckpt"
-# 87.7
-# CHECKPOINT="/data/worlddrive/navsim/exp/worldtraj/training_worlddrive/2026.02.26.13.23.41/lightning_logs/version_0/checkpoints/epoch=59-step=12120.ckpt"
+CHECKPOINT="worlddrive_stage1_train.ckpt" # download from HF
+
 torchrun \
     --nproc_per_node=8 \
     $NAVSIM_DEVKIT_ROOT/navsim/planning/script/run_pdm_score_worlddrive.py \
@@ -38,4 +34,4 @@ torchrun \
     use_cache_without_dataset=True \
     experiment_name=worlddrive_agent_eval \
     agent.with_wm_proj=True \
-    agent.vocab_path="/data/diffusiondrive/trajectory_anchors_256.npy"
+    agent.vocab_path="trajectory_anchors_256.npy"

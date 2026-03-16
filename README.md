@@ -2,13 +2,12 @@
 
 <h1>Bridging Scene Generation and Planning:
 
-Driving with World Model via Unifying Vision and Motion Representation
-Supplementary Material</h1>
+Driving with World Model via Unifying Vision and Motion Representation</h1>
 
 
 Xingtai Gui<sup>1</sup>, Meijie Zhang<sup>2</sup>, Tianyi Yan<sup>1</sup>, Wencheng Han<sup>1</sup>, Jiahao Gong<sup>2</sup>, Feiyang Tan<sup>2</sup>, Cheng-zhong Xu<sup>1</sup>, Jianbing Shen<sup>1</sup>  <br>
 > 
-<sup>1</sup>SKL-IOTSC, CIS, University of Macau, <sup>2</sup>Qian Li Drive
+<sup>1</sup>SKL-IOTSC, CIS, University of Macau, <sup>2</sup>Afari Intelligent Drive
 
 <a href="https://arxiv.org/pdf/2512.00723"><img src="https://img.shields.io/badge/arXiv-Paper-b31b1b.svg" alt="arXiv">
 </a>
