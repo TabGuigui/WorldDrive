@@ -341,7 +341,7 @@ def add_multimodal_trajectory_to_bev_ax(ax: plt.Axes, trajectory_list, config: D
                 markersize=config["marker_size"],
                 markeredgecolor=config["marker_edge_color"],
                 zorder=config["zorder"],
-                label=f"WorldTraj"
+                label=f"WorldDrive"
             )
         if i == 3:
             ax.plot(
@@ -355,7 +355,7 @@ def add_multimodal_trajectory_to_bev_ax(ax: plt.Axes, trajectory_list, config: D
                 markersize=config["marker_size"],
                 markeredgecolor=config["marker_edge_color"],
                 zorder=config["zorder"],
-                label=f"WorldTraj_w_Refine"
+                label=f"WorldDrive_w_FAR"
             )
         
 

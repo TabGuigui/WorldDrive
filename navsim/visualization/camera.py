@@ -404,15 +404,15 @@ def add_trajectory_to_camera_ax(ax: plt.Axes, camera: Camera, annotations, gt_tr
                 linewidth=3,
                 marker='o',
                 markersize=6,
-                label="WorldTraj")
+                label="WorldDrive")
         else:
             ax.plot(x, y, 
-                color="green",     # 线条颜色
-                linestyle='-',   # 实线
-                linewidth=3,     # 线宽
-                marker='o',      # 点标记
+                color="green",     
+                linestyle='-',   
+                linewidth=3,     
+                marker='o',      
                 markersize=6,
-                label="WorldTraj_w_Refine")    # 标记大小
+                label="WorldDrive_w_FAR") 
         i += 1
 
         ax.legend(loc="upper right", fontsize=15)

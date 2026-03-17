@@ -431,19 +431,23 @@ class WorldDriveAgent(AbstractAgent):
                 # visualization 
                 if self.visualize:
                     with torch.no_grad():
+                        print("generating future scene visualizations for predicted trajectories...")
                         ori_visual_latents = self.adapters(features["visual_token"][None])
                         h, w = ori_visual_latents.shape[-2:]
                         shape = (bs, self.cfg.predict_frames // self.cfg.temporal_compression_ratio + 3, self.cfg.vae_embed_dim, h, w)
                         rand_latents = randn_tensor(shape, generator=None, device=traj_score.device, dtype=traj_score.dtype)
 
-                        latents = self.world_model_refine(ori_visual_latents, pos_traj, latents=rand_latents, timesteps=100)
+                        latents = self.world_model_refine(ori_visual_latents, pos_traj, latents=rand_latents, timesteps=70)
                         self.scene_generate(latents, f"visual/pred_traj_{token_list[0]}", "worlddrive_far")
+                        print("finish world drive agent stage2 visualization")
 
-                        latents = self.world_model_refine(ori_visual_latents, topk_traj[:, 0], latents=rand_latents, timesteps=100)
+                        latents = self.world_model_refine(ori_visual_latents, topk_traj[:, 0], latents=rand_latents, timesteps=70)
                         self.scene_generate(latents, f"visual/pred_traj_{token_list[0]}", "worlddrive_top1")
+                        print("finish world drive agent stage1 visualization")
 
-                        latents = self.world_model_refine(ori_visual_latents, targets["trajectory"][None].to(torch.float), latents=rand_latents, timesteps=100)
+                        latents = self.world_model_refine(ori_visual_latents, targets["trajectory"][None].to(torch.float), latents=rand_latents, timesteps=70)
                         self.scene_generate(latents, f"visual/pred_traj_{token_list[0]}", "expert")
+                        print("finish expert visualization")
 
                 return {
                         "pred_traj_0": topk_traj[:, 0], # for visual

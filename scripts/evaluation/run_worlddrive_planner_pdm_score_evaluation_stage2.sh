@@ -22,18 +22,18 @@ echo "GPUS: ${GPUS}"
 echo "WorldDrive Agent Evaluation"
 export CUDA_LAUNCH_BLOCKING=1
 
-# 88.1 Release V1.1
-CHECKPOINT="/data/diffusiondrive/exp/worldtraj/training_trajworld_cvpr_baseline_refine_woteanchor_multi/2026.01.18.13.39.54/checkpoints/d-epoch=epoch=9-step=step=3330change.ckpt"
+
+CHECKPOINT="/data/worlddrive/navsim/ckpts/worlddrive_stage2_train.ckpt" # download from HF
 
 torchrun \
     --nproc_per_node=8 \
-    $NAVSIM_DEVKIT_ROOT/navsim/planning/script/run_pdm_score_worldtraj.py \
+    $NAVSIM_DEVKIT_ROOT/navsim/planning/script/run_pdm_score_worlddrive.py \
     train_test_split=$TRAIN_TEST_SPLIT \
-    agent=worldtraj_agent \
+    agent=worlddrive_agent \
     agent.checkpoint_path="'$CHECKPOINT'" \
     cache_path=/mnt/gxt-share-navsim/dataset/worldtraj_release/worldtraj_test_cache \
     use_cache_without_dataset=True \
-    experiment_name=worldtraj_agent_eval \
+    experiment_name=worlddrive_agent_eval \
     agent.training_mode=wm \
     agent.with_wm_proj=True \
     agent.vocab_path="trajectory_anchors_256.npy"

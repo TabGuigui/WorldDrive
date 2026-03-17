@@ -9,5 +9,4 @@ python3 navsim/planning/script/tutorial_visualization.py  \
     agent.with_wm_proj=True \
     agent.visualize=True\
     agent.vocab_path="trajectory_anchors_256.npy" \
-    agent.worldmodel_checkpoint_path="worldtraj_stage1_1024_tadwm.pkl
-"
+    agent.worldmodel_checkpoint_path="ckpts/worldtraj_stage1_1024_tadwm.pkl"

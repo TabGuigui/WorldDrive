@@ -36,6 +36,7 @@ def init_agent(cfg) -> None:
     GlobalHydra.instance().clear()
 
     hydra.initialize(config_path="./config/common/train_test_split/scene_filter")
+    cache_path = cfg.cache_path
     cfg = hydra.compose(config_name=FILTER)
     scene_filter: SceneFilter = instantiate(cfg)
     openscene_data_root = Path(os.getenv("OPENSCENE_DATA_ROOT"))
@@ -52,7 +53,7 @@ def init_agent(cfg) -> None:
         scene_loader=scene_loader,
         feature_builders=agent.get_feature_builders(),
         target_builders=agent.get_target_builders(),
-        cache_path=cfg.cache_path,
+        cache_path=cache_path,
         force_cache_computation=False,
     )
 
@@ -64,7 +65,7 @@ def init_agent(cfg) -> None:
     frame_idx = scene.scene_metadata.num_history_frames - 1
     fig, ax = plot_cameras_frame(scene, agent, frame_idx, train_data, token)
     fig.text(x=0.05, y=0.05, s=token,  fontsize=10,color="blue",ha="left", va="bottom")
-    plt.savefig(f"visual/worldtraj_{token}.jpg")
+    plt.savefig(f"visual/worlddrive_{token}.jpg")
 
 if __name__ == "__main__":
     init_agent()

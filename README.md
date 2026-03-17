@@ -23,7 +23,8 @@ Xingtai Gui<sup>1</sup>, Meijie Zhang<sup>2</sup>, Tianyi Yan<sup>1</sup>, Wench
 ---
 
 ## News
-**[2026.3.15]** Release the WorldDrive Evaluation and Visualization script!\
+**[2026.3.17]** Release the Arxiv Ppaer\
+**[2026.3.15]** Release the WorldDrive Evaluation and Visualization script\
 **[2026.3.14]** Release the WorldDrive Project! 
 
 
@@ -43,7 +44,7 @@ Xingtai Gui<sup>1</sup>, Meijie Zhang<sup>2</sup>, Tianyi Yan<sup>1</sup>, Wench
 
 --- 
 ## Abstract
-End-to-end autonomous driving aims to generate safe and plausible planning policies from raw sensor input, and constructing an effective scene representation is a critical challenge. Driving world models have shown great potential in learning rich representations by predicting the future evolution of a driving scene. However, existing driving world models primarily focus on visual scene representation, and motion representation is not explicitly designed to be planner-shared and inheritable, leaving a schism between the optimization of visual scene generation and the requirements of precise motion planning. We present WorldDrive, a holistic framework that couples scene generation and real-time planning via unifying vision and motion representation. We first introduce a Trajectory-aware Driving World Model, which conditions on a trajectory vocabulary to enforce consistency between visual dynamics and motion intentions, enabling the generation of diverse and plausible future scenes conditioned on a specific trajectory. We transfer the vision and motion encoders to a downstream Multi-modal Planner, ensuring the driving policy operates on mature representations pre-optimized by scene generation. A simple interaction between motion representation, visual representation, and ego status can generate high-quality, multi-modal trajectories. Furthermore, to exploit the world model’s foresight, we propose a Future-aware Rewarder, which distills future latent representation from the frozen world model to evaluate and select optimal trajectories in real-time. Extensive experiments on the NAVSIM, NAVSIM-v2, and nuScenes benchmarks demonstrate that WorldDrive achieves state-of-the-art planning performance among vision-only methods while maintaining high-fidelity action-controlled video generation capabilities, providing strong evidence for the effectiveness of unifying vision and motion representation for robust autonomous driving. Our code and model will be made publicly available.
+End-to-end autonomous driving aims to generate safe and plausible planning policies from raw sensor input, and constructing an effective scene representation is a critical challenge. Driving world models have shown great potential in learning rich representations by predicting the future evolution of a driving scene. However, existing driving world models primarily focus on visual scene representation, and motion representation is not explicitly designed to be planner-shared and inheritable, leaving a schism between the optimization of visual scene generation and the requirements of precise motion planning. We present WorldDrive, a holistic framework that couples scene generation and real-time planning via unifying vision and motion representation. We first introduce a Trajectory-aware Driving World Model, which conditions on a trajectory vocabulary to enforce consistency between visual dynamics and motion intentions, enabling the generation of diverse and plausible future scenes conditioned on a specific trajectory. We transfer the vision and motion encoders to a downstream Multi-modal Planner, ensuring the driving policy operates on mature representations pre-optimized by scene generation. A simple interaction between motion representation, visual representation, and ego status can generate high-quality, multi-modal trajectories. Furthermore, to exploit the world model’s foresight, we propose a Future-aware Rewarder, which distills future latent representation from the frozen world model to evaluate and select optimal trajectories in real-time. Extensive experiments on the NAVSIM, NAVSIM-v2, and nuScenes benchmarks demonstrate that WorldDrive achieves state-of-the-art planning performance among vision-only methods while maintaining high-fidelity action-controlled video generation capabilities, providing strong evidence for the effectiveness of unifying vision and motion representation for robust autonomous driving.
 
 ---
 ## Overview
@@ -66,6 +67,11 @@ We provide detailed guides to help you quickly set up, and evaluate WorldDrive:
 ## Checkpoint
 
 👉 [Checkpoint](https://huggingface.co/tabguigui/WorldDrive/tree/main)
+```bash
+# worlddrive_stage1_train.ckpt planner checkpoint
+# worlddrive_stage2_train.ckpt planner with future-aware rewarder checkpoint
+# worldtraj_stage1_1024_tadwm.pkl TA-DWM pretrain checkpoint
+```
 
 
 ## Quick Evaluation
@@ -81,7 +87,14 @@ sh scripts/cache/run_caching_trajworld_eval.sh # navtest for eval
 
 #### Step2: evaluate planner
 ```bash
+# download worlddrive_stage1_train.ckpt
 sh scripts/evaluation/run_worlddrive_planner_pdm_score_evaluation_stage1.sh
+```
+
+#### Step3: evaluate planner with future-aware rewarder
+```bash
+# download worlddrive_stage2_train.ckpt
+sh scripts/evaluation/run_worlddrive_planner_pdm_score_evaluation_stage2.sh
 ```
 
 
