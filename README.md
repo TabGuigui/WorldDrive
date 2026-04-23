@@ -23,6 +23,7 @@ Xingtai Gui<sup>1</sup>, Meijie Zhang<sup>2</sup>, Tianyi Yan<sup>1</sup>, Wench
 ---
 
 ## News
+**[2026.4.23]** Release the Planner Training script\
 **[2026.3.17]** Release the Arxiv Paper\
 **[2026.3.15]** Release the WorldDrive Evaluation and Visualization script\
 **[2026.3.14]** Release the WorldDrive Project! 
