@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>Bridging Scene Generation and Planning:
+<h1>[NeurIPS 2026] Bridging Scene Generation and Planning:
 
 Driving with World Model via Unifying Vision and Motion Representation</h1>
 
@@ -23,6 +23,7 @@ Xingtai Gui<sup>1</sup>, Meijie Zhang<sup>2</sup>, Tianyi Yan<sup>1</sup>, Wench
 ---
 
 ## News
+**[2026.9.25]** WorldDrive is accepted in NeurIPS 2026! \
 **[2026.8.3]** Release the WorldDrive training script and latest checkpoint\
 **[2026.3.17]** Release the Arxiv Paper\
 **[2026.3.15]** Release the WorldDrive Evaluation and Visualization script\
