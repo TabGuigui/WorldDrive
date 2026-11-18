@@ -157,3 +157,12 @@ We thank the research community for their valuable support. WorldDrive is built 
  
 ## Citation
 If you find WorldDrive is useful in your research or applications, please consider giving us a star 🌟.
+
+```
+@article{gui2026bridging,
+  title={Bridging scene generation and planning: Driving with world model via unifying vision and motion representation},
+  author={Gui, Xingtai and Zhang, Meijie and Yan, Tianyi and Han, Wencheng and Gong, Jiahao and Tan, Feiyang and Xu, Cheng-zhong and Shen, Jianbing},
+  journal={arXiv preprint arXiv:2603.14948},
+  year={2026}
+}
+```
